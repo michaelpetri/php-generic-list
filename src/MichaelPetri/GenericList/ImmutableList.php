@@ -10,7 +10,7 @@ namespace MichaelPetri\GenericList;
  */
 final class ImmutableList
 {
-    /** @param list<T> $items */
+    /** @psalm-param list<T> $items */
     private function __construct(private readonly array $items)
     {
     }
@@ -20,7 +20,7 @@ final class ImmutableList
      *
      * @param TInit[] $items
      *
-     * @return self<TInit>
+     * @psalm-return self<TInit>
      */
     public static function of(array $items): self
     {
@@ -34,9 +34,9 @@ final class ImmutableList
     /**
      * @template TOut
      *
-     * @param callable(T): TOut $callback
+     * @psalm-param pure-callable(T): TOut $callback
      *
-     * @return self<TOut>
+     * @psalm-return self<TOut>
      */
     public function map(callable $callback): self
     {
@@ -51,9 +51,9 @@ final class ImmutableList
     }
 
     /**
-     * @param callable(T): bool $callback
+     * @psalm-param pure-callable(T): bool $callback
      *
-     * @return self<T>
+     * @psalm-return self<T>
      */
     public function filter(callable $callback): self
     {
@@ -70,9 +70,9 @@ final class ImmutableList
     }
 
     /**
-     * @param callable(T): void $callback
+     * @psalm-param pure-callable(T): void $callback
      *
-     * @return self<T>
+     * @psalm-return self<T>
      */
     public function each(callable $callback): self
     {
@@ -83,7 +83,7 @@ final class ImmutableList
         return $this;
     }
 
-    /** @return list<T> */
+    /** @psalm-return list<T> */
     public function toArray(): array
     {
         return $this->items;
