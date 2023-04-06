@@ -6,7 +6,7 @@ namespace MichaelPetri\GenericList;
 
 /**
  * @template T
- * @psalm-immutable
+ * @psalm-readonly
  */
 final class ImmutableList
 {
@@ -18,11 +18,11 @@ final class ImmutableList
     /**
      * @template TInit
      *
-     * @param TInit[] $items
+     * @param array<array-key, TInit> $items
      *
      * @psalm-return self<TInit>
      */
-    public static function of(array $items): self
+    public static function of(mixed ...$items): self
     {
         return new self(
             \array_values(
@@ -70,7 +70,7 @@ final class ImmutableList
     }
 
     /**
-     * @psalm-param pure-callable(T): void $callback
+     * @psalm-param callable(T): void $callback
      *
      * @psalm-return self<T>
      */
@@ -87,5 +87,23 @@ final class ImmutableList
     public function toArray(): array
     {
         return $this->items;
+    }
+
+    /**
+     * @psalm-param T $item
+     * @psalm-return self<T>
+     */
+    public function with(mixed $item): self
+    {
+        return self::of(...\array_merge(
+            $this->toArray(),
+            [$item]
+        ));
+    }
+
+    /** @psalm-return self<T> */
+    public function unique(): self
+    {
+        return self::of(...\array_unique($this->items));
     }
 }
