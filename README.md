@@ -12,13 +12,20 @@ composer require michaelpetri/php-generic-list
 ## Usage:
 
 ```php
-ImmutableList::of([1, 2, 3, 4, 5])
+ImmutableList::of(1, 2, 3, 4, 5)
     ->filter(
         static fn(int $i): bool => 0 === $i % 2
     )
     ->map(
         static fn(int $i): int => 2 ** $i
     )
+    ->with(
+        32
+    )
+    ->with(
+        32
+    )
+    ->unique()
     ->each(
         static function (int $i): void { sprintf("\d\n", $i) }
     )
@@ -26,6 +33,7 @@ ImmutableList::of([1, 2, 3, 4, 5])
 // Output:
 // 4 
 // 16
+// 32
 ```
 
 ## Available methods:
