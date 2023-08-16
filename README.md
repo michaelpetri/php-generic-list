@@ -4,12 +4,13 @@
 [![Latest Stable Version](https://poser.pugx.org/michaelpetri/php-generic-list/v)](https://packagist.org/packages/michaelpetri/php-generic-list)
 [![License](https://poser.pugx.org/michaelpetri/php-generic-list/license)](https://packagist.org/packages/michaelpetri/php-generic-list)
 
-## Installation:
-```
+## Installation
+
+```shell
 composer require michaelpetri/php-generic-list 
 ```
 
-## Usage:
+## Usage
 
 ```php
 ImmutableList::of(1, 2, 3, 4, 5)
@@ -36,7 +37,7 @@ ImmutableList::of(1, 2, 3, 4, 5)
 // 32
 ```
 
-## Available methods:
+## Available methods
 
 * `map`
 * `filter`
