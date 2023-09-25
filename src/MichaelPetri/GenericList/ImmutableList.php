@@ -95,10 +95,7 @@ final class ImmutableList
      */
     public function with(mixed $item): self
     {
-        return self::of(...\array_merge(
-            $this->toArray(),
-            [$item]
-        ));
+        return self::of(...[...$this->toArray(), $item]);
     }
 
     /** @psalm-return self<T> */
