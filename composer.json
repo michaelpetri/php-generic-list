@@ -44,5 +44,8 @@
         "security": "composer update --dry-run roave/security-advisories",
         "phpunit": "vendor/bin/phpunit --testdox --order-by=random",
         "phpunit-coverage-report": "vendor/bin/phpunit --coverage-html=.phpunit-coverage-report"
+    },
+    "conflict": {
+        "stevebauman/unfinalize": "*"
     }
 }
